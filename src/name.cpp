@@ -7,6 +7,15 @@
 
 #include "name.h"
 
+Name::Name(){
+	firstName = "";
+	lastName = "";
+}
+
+Name::Name(const string firstName,const string lastName){
+
+}
+
 void Name::setFirstName(const string name){
 	firstName = name;
 }

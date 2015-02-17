@@ -12,13 +12,14 @@
 using std::string;
 
 class Name{
-
 private:
 	string firstName;
 	string lastName;
 public:
-	void setFirstName(string name);
-	void setLastName(string name);
+	Name();
+	Name(const string firstName,const string lastName);
+	void setFirstName(const string firstName);
+	void setLastName(const string lastName);
 	string getFirstName() const;
 	string getLastName() const;
 };
