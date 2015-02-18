@@ -18,8 +18,8 @@ private:
 public:
 	Name();
 	Name(const string firstName,const string lastName);
-	void setFirstName(const string firstName);
-	void setLastName(const string lastName);
+	void setFirstName(const string fName);
+	void setLastName(const string lName);
 	string getFirstName() const;
 	string getLastName() const;
 };

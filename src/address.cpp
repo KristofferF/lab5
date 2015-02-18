@@ -8,22 +8,26 @@
 #include"address.h"
 
 Address::Address(){
-
+	address = "";
+	postalNumber = "";
+	city = "";
 }
-Address::Address(const string adress, const string postalNumber, const string city){
-
+Address::Address(const string address, const string postalNumber, const string city){
+	this->address = address;
+	this->postalNumber = postalNumber;
+	this->city = city;
 }
-void Address::setAdress(const string name){
-
+void Address::setAddress(const string address){
+	this->address = address;
 }
-void Address::setPostalNumber(const string name){
-
+void Address::setPostalNumber(const string postalNumber){
+	this->postalNumber = postalNumber;
 }
-void Address::setCity(const string name){
-
+void Address::setCity(const string city){
+	this->city = city;
 }
 string Address::getAdress() const{
-	return adress;
+	return address;
 }
 string Address::getPostalNumber() const{
 	return postalNumber;

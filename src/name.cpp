@@ -13,15 +13,16 @@ Name::Name(){
 }
 
 Name::Name(const string firstName,const string lastName){
-
+	this->firstName = firstName;
+	this->lastName = lastName;
 }
 
-void Name::setFirstName(const string name){
-	firstName = name;
+void Name::setFirstName(const string firstName){
+	this->firstName = firstName;
 }
 
-void Name::setLastName(const string name){
-	lastName = name;
+void Name::setLastName(const string lastName){
+	this->lastName = lastName;
 }
 
 string Name::getFirstName() const{
