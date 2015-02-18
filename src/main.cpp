@@ -11,26 +11,39 @@
 #include <vector>
 using namespace std;
 
-void selection();
-void addData();
-void showData();
-
-vector<Person> personelRegister;
-vector<string> entries = {"first name", "last name", "address", "postal number", "city", "personal number"};
-vector<string> answers(entries.size(), "");
-int shoeSize = 0;
+void createExamples(vector<Person>& personelRegister);
+void selection(vector<Person>& personelRegister, vector<string>& entries, vector<string>& answers);
+void addData(vector<Person>& personelRegister, vector<string>& entries, vector<string>& answers);
+void showData(vector<Person>& personelRegister);
 
 int main() {
-	cout << "Welcome to the lab2 personnel register" << endl;
-	selection();
+	vector<Person> personelRegister;
+	vector<string> entries = {"first name", "last name", "address", "postal number", "city", "personal number"};
+	vector<string> answers(entries.size(), "");
+	createExamples(personelRegister);
+	selection(personelRegister, entries, answers);
 	return 0;
 }
 
-void selection(){
+////------------------------------------------------------------------------------
+//// Skapa tre exempel personer
+////------------------------------------------------------------------------------
+void createExamples(vector<Person>& personelRegister){
+	personelRegister.push_back (Person("Kristoffer", "Freiholtz", "Lindholmsallen 37", "41756", "Göteborg", "870316-5996", 42));
+	personelRegister.push_back (Person("Anders", "Karlsson", "Ekgatan 2", "53592", "Vara", "650403-6745", 43));
+	personelRegister.push_back (Person("Linda", "Göransson", "Storgatan 4", "65743", "Linköping", "781121-1876", 37));
+}
+
+////------------------------------------------------------------------------------
+//// Välj vilket kommando man vill utföra
+////------------------------------------------------------------------------------
+
+void selection(vector<Person>& personelRegister, vector<string>& entries, vector<string>& answers){
 	int selection = 0;
 	bool active = true;
+	cout << "Welcome to the lab2 personnel register" << endl;
 	while(active){
-			cout << "1. Enter data for a new person\n2. Show all data\n3. Exit\nChoose an alternative: ";
+			cout << endl << "1. Enter data for a new person\n2. Show all data\n3. Exit\nChoose an alternative: ";
 			cin >> selection;
 			while(cin.fail() || selection < 1 || selection > 3){
 				cin.clear();
@@ -40,10 +53,10 @@ void selection(){
 			}
 			switch (selection){
 			case 1:
-				addData();
+				addData(personelRegister, entries, answers);
 				break;
 			case 2:
-				showData();
+				showData(personelRegister);
 				break;
 			case 3:
 				active = false;
@@ -53,10 +66,16 @@ void selection(){
 	cout << "Thanks for using lab2 personnel register" << endl; // prints !!!Hello World!!!
 }
 
-void addData(){
+////------------------------------------------------------------------------------
+//// Lägg till data till vectorn
+////------------------------------------------------------------------------------
+
+void addData(vector<Person>& personelRegister, vector<string>& entries, vector<string>& answers){
+	int shoeSize = 0;
+	cin.ignore();
 	for(size_t i = 0; i < entries.size(); i++){
 		cout << "Enter " << entries[i] << ": ";
-		cin >> answers[i];
+		getline (cin, answers[i]);
 	}
 	cout << "Enter shoe size: ";
 	cin >> shoeSize;
@@ -69,9 +88,13 @@ void addData(){
 	personelRegister.push_back (Person(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], shoeSize));
 }
 
-void showData(){
+////------------------------------------------------------------------------------
+//// Skriv ut datan i vectorn
+////------------------------------------------------------------------------------
+
+void showData(vector<Person>& personelRegister){
 	for (Person x: personelRegister){
-		cout << x.getFirstName() << endl << x.getLastName() << endl << x.getAddress() << endl << x.getPostalNumber() << endl
-				<< x.getCity() << endl << x.getPersNr() << endl << x.getShoeSize() << "\n\n\n";
+		cout << endl << x.getFirstName() << endl << x.getLastName() << endl << x.getAddress() << endl << x.getPostalNumber() << endl
+				<< x.getCity() << endl << x.getPersNr() << endl << "Shoe size " << x.getShoeSize() << endl;
 	}
 }
