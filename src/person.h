@@ -23,20 +23,14 @@ private:
 
 public:
 	Person();
-	Person(const string firstName, const string lastname, const string address, const string postalNumber,
+	Person(const string firstName, const string lastname, const string streetAddress, const string postalNumber,
 			const string city, const string persNr, const int shoeSize);
-	void setFirstName(const string firstName);
-	void setLastName(const string lastName);
-	void setAddress(const string address);
-	void setPostalNumber(const string postalNumber);
-	void setCity(const string city);
+	void setName(const Name name);
+	void setAddress(const Address address);
 	void setPersNr(const string persNr);
 	void setShoeSize(const int shoeSize);
-	string getFirstName() const;
-	string getLastName() const;
-	string getAddress() const;
-	string getPostalNumber() const;
-	string getCity() const;
+	Name getName() const;
+	Address getAddress() const;
 	string getPersNr() const;
 	int getShoeSize() const;
 };

@@ -7,56 +7,85 @@
 
 #include "person.h"
 
+//------------------------------------------------------------------------------
+// Förvald konstruktor (Default constructor)
+//------------------------------------------------------------------------------
 Person::Person(){
 	persNr = "";
 	shoeSize = 0;
 }
-Person::Person(const string firstName, const string lastName, const string address, const string postalNumber,
+
+//------------------------------------------------------------------------------
+// Konstruktor för initiering av datamedlemmarna
+//------------------------------------------------------------------------------
+Person::Person(const string firstName, const string lastName, const string streetAddress, const string postalNumber,
 			const string city, const string persNr, const int shoeSize){
 	name = Name(firstName, lastName);
-	this->address = Address(address, postalNumber, city);
+	address = Address(streetAddress, postalNumber, city);
 	this->persNr = persNr;
 	this->shoeSize = shoeSize;
 }
-void Person::setFirstName(const string firstName){
-	name.setFirstName(firstName);
+
+//------------------------------------------------------------------------------
+// setName
+// Datamedlemmen name ges värdet av parametern name
+//------------------------------------------------------------------------------
+void Person::setName(const Name name){
+	this->name = name;
 }
-void Person::setLastName(const string lastName){
-	name.setLastName(lastName);
+
+//------------------------------------------------------------------------------
+// setAddress
+// Datamedlemmen address ges värdet av parametern address
+//------------------------------------------------------------------------------
+void Person::setAddress(const Address address){
+	this->address = address;
 }
-void Person::setAddress(const string address){
-	this->address.setAddress(address);
-}
-void Person::setPostalNumber(const string postalNumber){
-	address.setPostalNumber(postalNumber);
-}
-void Person::setCity(const string city){
-	address.setCity(city);
-}
+
+//------------------------------------------------------------------------------
+// setPersNr
+// Datamedlemmen persNr ges värdet av parametern persNr
+//------------------------------------------------------------------------------
 void Person::setPersNr(const string persNr){
 	this->persNr = persNr;
 }
+
+//------------------------------------------------------------------------------
+// ssetShoeSize
+// Datamedlemmen shoeSize ges värdet av parametern shoeSize
+//------------------------------------------------------------------------------
 void Person::setShoeSize(const int shoeSize){
 	this->shoeSize = shoeSize;
 }
-string Person::getFirstName() const{
-	return name.getFirstName();
+
+//------------------------------------------------------------------------------
+// getName
+// Returnera datamedlemmen name (Name)
+//------------------------------------------------------------------------------
+Name Person::getName() const{
+	return name;
 }
-string Person::getLastName() const{
-	return name.getLastName();
+
+//------------------------------------------------------------------------------
+// getAddress
+// Returnera datamedlemmen address (Address)
+//------------------------------------------------------------------------------
+Address Person::getAddress() const{
+	return address;
 }
-string Person::getAddress() const{
-	return address.getAdress();
-}
-string Person::getPostalNumber() const{
-	return address.getPostalNumber();
-}
-string Person::getCity() const{
-	return address.getCity();
-}
+
+//------------------------------------------------------------------------------
+// getPersNr
+// Returnera datamedlemmen persNr (string)
+//------------------------------------------------------------------------------
 string Person::getPersNr() const{
 	return persNr;
 }
+
+//------------------------------------------------------------------------------
+// getShoeSize
+// Returnera datamedlemmen shoeSize (int)
+//------------------------------------------------------------------------------
 int Person::getShoeSize() const{
 	return shoeSize;
 }

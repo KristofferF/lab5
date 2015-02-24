@@ -7,31 +7,68 @@
 
 #include"address.h"
 
+//------------------------------------------------------------------------------
+// Förvald konstruktor (Default constructor)
+//------------------------------------------------------------------------------
 Address::Address(){
-	address = "";
+	streetAddress = "";
 	postalNumber = "";
 	city = "";
 }
-Address::Address(const string address, const string postalNumber, const string city){
-	this->address = address;
+
+//------------------------------------------------------------------------------
+// Konstruktor för initiering av datamedlemmarna
+//------------------------------------------------------------------------------
+Address::Address(const string streetAddress, const string postalNumber, const string city){
+	this->streetAddress = streetAddress;
 	this->postalNumber = postalNumber;
 	this->city = city;
 }
-void Address::setAddress(const string address){
-	this->address = address;
+
+//------------------------------------------------------------------------------
+// setAddress
+// Datamedlemmen address ges värdet av parametern address
+//------------------------------------------------------------------------------
+void Address::setStreetAddress(const string streetAddress){
+	this->streetAddress = streetAddress;
 }
+
+//------------------------------------------------------------------------------
+// setPostalNumber
+// Datamedlemmen postalNumber ges värdet av parametern postalNumber
+//------------------------------------------------------------------------------
 void Address::setPostalNumber(const string postalNumber){
 	this->postalNumber = postalNumber;
 }
+
+//------------------------------------------------------------------------------
+// setCity
+// Datamedlemmen city ges värdet av parametern city
+//------------------------------------------------------------------------------
 void Address::setCity(const string city){
 	this->city = city;
 }
-string Address::getAdress() const{
-	return address;
+
+//------------------------------------------------------------------------------
+// getAddress
+// Returnera datamedlemmen address (string)
+//------------------------------------------------------------------------------
+string Address::getStreetAdress() const{
+	return streetAddress;
 }
+
+//------------------------------------------------------------------------------
+// getPostalNumber
+// Returnera datamedlemmen postalNumber (string)
+//------------------------------------------------------------------------------
 string Address::getPostalNumber() const{
 	return postalNumber;
 }
+
+//------------------------------------------------------------------------------
+// getCity
+// Returnera datamedlemmen city (string)
+//------------------------------------------------------------------------------
 string Address::getCity() const{
 	return city;
 }

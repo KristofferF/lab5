@@ -37,7 +37,6 @@ void createExamples(vector<Person>& personelRegister){
 ////------------------------------------------------------------------------------
 //// Välj vilket kommando man vill utföra
 ////------------------------------------------------------------------------------
-
 void selection(vector<Person>& personelRegister, vector<string>& entries, vector<string>& answers){
 	int selection = 0;
 	bool active = true;
@@ -69,7 +68,6 @@ void selection(vector<Person>& personelRegister, vector<string>& entries, vector
 ////------------------------------------------------------------------------------
 //// Lägg till data till vectorn
 ////------------------------------------------------------------------------------
-
 void addData(vector<Person>& personelRegister, vector<string>& entries, vector<string>& answers){
 	int shoeSize = 0;
 	cin.ignore();
@@ -91,10 +89,9 @@ void addData(vector<Person>& personelRegister, vector<string>& entries, vector<s
 ////------------------------------------------------------------------------------
 //// Skriv ut datan i vectorn
 ////------------------------------------------------------------------------------
-
 void showData(vector<Person>& personelRegister){
 	for (Person x: personelRegister){
-		cout << endl << x.getFirstName() << endl << x.getLastName() << endl << x.getAddress() << endl << x.getPostalNumber() << endl
-				<< x.getCity() << endl << x.getPersNr() << endl << "Shoe size " << x.getShoeSize() << endl;
+		cout << endl << x.getName().getFirstName() << endl << x.getName().getLastName() << endl << x.getAddress().getStreetAdress() << endl <<
+				x.getAddress().getPostalNumber() << endl << x.getAddress().getCity() << endl << x.getPersNr() << endl << "Shoe size " << x.getShoeSize() << endl;
 	}
 }

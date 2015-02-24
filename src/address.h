@@ -13,16 +13,16 @@ using std::string;
 
 class Address{
 private:
-	string address;
+	string streetAddress;
 	string postalNumber;
 	string city;
 public:
 	Address();
-	Address(const string address,const string postalNumber,const string city);
-	void setAddress(const string address);
+	Address(const string streetAddress,const string postalNumber,const string city);
+	void setStreetAddress(const string streetAddress);
 	void setPostalNumber(const string postalNumber);
 	void setCity(const string city);
-	string getAdress() const;
+	string getStreetAdress() const;
 	string getPostalNumber() const;
 	string getCity() const;
 };
