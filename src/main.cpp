@@ -73,7 +73,7 @@ void addData(vector<Person>& personelRegister, vector<string>& entries, vector<s
 	cin.ignore();
 	for(size_t i = 0; i < entries.size(); i++){
 		cout << "Enter " << entries[i] << ": ";
-		getline (cin, answers[i]);
+		getline(cin, answers[i]);
 	}
 	cout << "Enter shoe size: ";
 	cin >> shoeSize;

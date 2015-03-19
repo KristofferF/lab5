@@ -22,6 +22,8 @@ public:
 	void setLastName(const string lastName);
 	string getFirstName() const;
 	string getLastName() const;
+	bool operator==(const Name &name) const;
+	bool operator<(const Name &name) const;
 };
 
 #endif /* NAME_H_ */

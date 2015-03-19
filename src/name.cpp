@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------------
 // Förvald konstruktor (Default constructor)
 //------------------------------------------------------------------------------
-Name::Name(){
+Name::Name() {
 	firstName = "";
 	lastName = "";
 }
@@ -18,7 +18,7 @@ Name::Name(){
 //------------------------------------------------------------------------------
 // Konstruktor för initiering av datamedlemmarna
 //------------------------------------------------------------------------------
-Name::Name(const string firstName,const string lastName){
+Name::Name(const string firstName, const string lastName) {
 	this->firstName = firstName;
 	this->lastName = lastName;
 }
@@ -27,7 +27,7 @@ Name::Name(const string firstName,const string lastName){
 // setFirstName
 // Datamedlemmen firstName ges värdet av parametern firstName
 //------------------------------------------------------------------------------
-void Name::setFirstName(const string firstName){
+void Name::setFirstName(const string firstName) {
 	this->firstName = firstName;
 }
 
@@ -35,7 +35,7 @@ void Name::setFirstName(const string firstName){
 // setLastName
 // Datamedlemmen lastName ges värdet av parametern lastName
 //------------------------------------------------------------------------------
-void Name::setLastName(const string lastName){
+void Name::setLastName(const string lastName) {
 	this->lastName = lastName;
 }
 
@@ -43,7 +43,7 @@ void Name::setLastName(const string lastName){
 // getFirstName
 // Returnera datamedlemmen firstName (string)
 //------------------------------------------------------------------------------
-string Name::getFirstName() const{
+string Name::getFirstName() const {
 	return firstName;
 }
 
@@ -51,8 +51,29 @@ string Name::getFirstName() const{
 // getLastName
 // Returnera datamedlemmen lastName (string)
 //------------------------------------------------------------------------------
-string Name::getLastName() const{
+string Name::getLastName() const {
 	return lastName;
 }
 
+//------------------------------------------------------------------------------
+// overloaded == operator
+//
+//------------------------------------------------------------------------------
+bool Name::operator==(const Name &name) const {
+	return firstName == name.getFirstName() && lastName == name.getLastName();
+}
 
+//------------------------------------------------------------------------------
+// overloaded < operator
+//
+//------------------------------------------------------------------------------
+bool Name::operator<(const Name &name) const {
+	if (lastName < name.getLastName()) {
+		return true;
+	} else if (lastName == name.getLastName()) {
+		if(firstName < name.getLastName()){
+			return true;
+		}
+	}
+	return false;
+}
