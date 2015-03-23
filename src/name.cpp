@@ -5,7 +5,8 @@
  *      Author: Kristoffer Freiholtz
  */
 
-#include "name.h"
+#include"name.h"
+#include<iomanip>
 
 //------------------------------------------------------------------------------
 // Förvald konstruktor (Default constructor)
@@ -27,7 +28,7 @@ Name::Name(const string firstName, const string lastName) {
 // setFirstName
 // Datamedlemmen firstName ges värdet av parametern firstName
 //------------------------------------------------------------------------------
-void Name::setFirstName(const string firstName) {
+void Name::setFirstName(const string firstName){
 	this->firstName = firstName;
 }
 
@@ -76,4 +77,21 @@ bool Name::operator<(const Name &name) const {
 		}
 	}
 	return false;
+}
+
+ostream &operator<<(ostream &os, const Name &name){
+	os << setw(2) << name.getFirstName() << " " << setw(2) << name.getLastName();
+	return os;
+}
+
+istream &operator>>(istream &is, Name &name){
+	string tmpFirstName;
+	string tmpLastName;
+	cout << "First Name	: ";
+	is >> tmpFirstName;
+	cout << "Last Name: ";
+	is >> tmpLastName;
+	name.setFirstName(tmpFirstName);
+	name.setLastName(tmpLastName);
+	return is;
 }

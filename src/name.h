@@ -9,7 +9,8 @@
 #define NAME_H_
 
 #include<string>
-using std::string;
+#include<iostream>
+using namespace std;
 
 class Name{
 private:
@@ -25,5 +26,8 @@ public:
 	bool operator==(const Name &name) const;
 	bool operator<(const Name &name) const;
 };
+
+ostream &operator<<(ostream &os, const Name &name);
+istream &operator>>(istream &is, Name &name);
 
 #endif /* NAME_H_ */
