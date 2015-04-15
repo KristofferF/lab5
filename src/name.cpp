@@ -72,7 +72,7 @@ bool Name::operator<(const Name &name) const {
 	if (lastName < name.getLastName()) {
 		return true;
 	} else if (lastName == name.getLastName()) {
-		if(firstName < name.getLastName()){
+		if(firstName < name.getFirstName()){
 			return true;
 		}
 	}

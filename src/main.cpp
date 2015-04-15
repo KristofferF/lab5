@@ -17,11 +17,20 @@ void addData(vector<Person>& personelRegister, vector<string>& entries, vector<s
 void showData(vector<Person>& personelRegister);
 
 int main() {
-	vector<Person> personelRegister;
-	vector<string> entries = {"first name", "last name", "address", "postal number", "city", "personal number"};
-	vector<string> answers(entries.size(), "");
-	createExamples(personelRegister);
-	selection(personelRegister, entries, answers);
+//	vector<Person> personelRegister;
+//	vector<string> entries = {"first name", "last name", "address", "postal number", "city", "personal number"};
+//	vector<string> answers(entries.size(), "");
+//	createExamples(personelRegister);
+//	selection(personelRegister, entries, answers);
+
+	Name name = Name("Kristoffer", "Freiholtz");
+	Name name1 = Name("ristoffer", "Freiholtz");
+	if(name < name1){
+		printf("true");
+	}
+	else{
+		printf("false");
+	}
 	return 0;
 }
 
