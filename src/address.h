@@ -9,7 +9,8 @@
 #define ADDRESS_H_
 
 #include<string>
-using std::string;
+#include<iostream>
+using namespace std;
 
 class Address{
 private:
@@ -25,7 +26,13 @@ public:
 	string getStreetAdress() const;
 	string getPostalNumber() const;
 	string getCity() const;
+	bool operator==(const Address &address) const;
+	bool operator<(const Address &address) const;
 };
+
+ostream &operator<<(ostream &os, const Address &address);
+istream &operator>>(istream &is, Address &address);
+
 
 
 

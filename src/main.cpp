@@ -22,14 +22,51 @@ int main() {
 //	vector<string> answers(entries.size(), "");
 //	createExamples(personelRegister);
 //	selection(personelRegister, entries, answers);
+	Person person;
+	cin>>person;
+	cout<<person;
+
+	Person person2;
+	cin>>person2;
+	cout<<person2;
+
+	if(person < person2){
+				cout<<"true"<<endl;
+			}
+			else{
+				cout<<"false"<<endl;
+			}
+
 
 	Name name = Name("Kristoffer", "Freiholtz");
 	Name name1 = Name("ristoffer", "Freiholtz");
-	if(name < name1){
-		printf("true");
+	Address address = Address("lindholmsallen", "41753", "Gothenburg");
+	Address address1 = Address("lindholmsallen", "41753", "Aothenburg");
+	if(address < address1){
+			cout<<"true"<<endl;
+		}
+		else{
+			cout<<"false"<<endl;
+		}
+	cout<<address<<endl;
+	cin>>address;
+	cout<<address<<endl;
+	if(address < address1){
+		cout<<"true"<<endl;
 	}
 	else{
-		printf("false");
+		cout<<"false"<<endl;
+	}
+
+
+	cout<<name<<endl;
+	cin>>name;
+	cout<<name<<endl;
+	if(name < name1){
+		cout<<"true"<<endl;
+	}
+	else{
+		cout<<"false"<<endl;
 	}
 	return 0;
 }
@@ -38,9 +75,9 @@ int main() {
 //// Skapa tre exempel personer
 ////------------------------------------------------------------------------------
 void createExamples(vector<Person>& personelRegister){
-	personelRegister.push_back (Person("Kristoffer", "Freiholtz", "Lindholmsallen 37", "41756", "Göteborg", "870316-5996", 42));
+	personelRegister.push_back (Person("Kristoffer", "Freiholtz", "Lindholmsallen 37", "41756", "G�teborg", "870316-5996", 42));
 	personelRegister.push_back (Person("Anders", "Karlsson", "Ekgatan 2", "53592", "Vara", "650403-6745", 43));
-	personelRegister.push_back (Person("Linda", "Göransson", "Storgatan 4", "65743", "Linköping", "781121-1876", 37));
+	personelRegister.push_back (Person("Linda", "G�ransson", "Storgatan 4", "65743", "Link�ping", "781121-1876", 37));
 }
 
 ////------------------------------------------------------------------------------

@@ -12,7 +12,8 @@
 #include "address.h"
 
 #include <string>
-using std::string;
+#include<iostream>
+using namespace std;
 
 class Person{
 private:
@@ -33,7 +34,12 @@ public:
 	Address getAddress() const;
 	string getPersNr() const;
 	int getShoeSize() const;
+	bool operator==(const Person &person) const;
+	bool operator<(const Person &person) const;
 };
+
+ostream &operator<<(ostream &os, const Person &person);
+istream &operator>>(istream &is, Person &person);
 
 
 #endif /* PERSON_H_ */

@@ -6,6 +6,7 @@
  */
 
 #include "person.h"
+#include<iomanip>
 
 //------------------------------------------------------------------------------
 // Förvald konstruktor (Default constructor)
@@ -88,4 +89,52 @@ string Person::getPersNr() const{
 //------------------------------------------------------------------------------
 int Person::getShoeSize() const{
 	return shoeSize;
+}
+
+//------------------------------------------------------------------------------
+// overloaded == operator
+//
+//------------------------------------------------------------------------------
+bool Person::operator==(const Person &person) const {
+	//return name == person.getName;// && address == person.getAddress && persNr == person.getPersNr() && shoeSize == person.getShoeSize();
+	return true;
+}
+
+//------------------------------------------------------------------------------
+// overloaded < operator
+//
+//------------------------------------------------------------------------------
+bool Person::operator<(const Person &person) const {
+	if (name < person.getName()) {
+		return true;
+	} else if (name == person.getName()) {
+		if(address == person.getAddress()){
+			return true;
+		}
+	}
+	return false;
+}
+
+ostream &operator<<(ostream &os, const Person &person){
+	os << setw(2) << person.getName() << " " << setw(2) << person.getAddress()
+			<< " " << setw(2) << person.getPersNr() << " " << setw(2) << person.getShoeSize();
+	return os;
+}
+
+istream &operator>>(istream &is, Person &person){
+	Name tmpName;
+	Address tmpAddress;
+	string tmpPersNr;
+	int tmpShoeSize;
+	is >> tmpName;
+	is >> tmpAddress;
+	cout << "Personal number: ";
+	is >> tmpPersNr;
+	cout << "Shoe Size: ";
+	is >> tmpShoeSize;
+	person.setName(tmpName);
+	person.setAddress(tmpAddress);
+	person.setPersNr(tmpPersNr);
+	person.setShoeSize(tmpShoeSize);
+	return is;
 }

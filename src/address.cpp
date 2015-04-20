@@ -6,6 +6,7 @@
  */
 
 #include"address.h"
+#include<iomanip>
 
 //------------------------------------------------------------------------------
 // Förvald konstruktor (Default constructor)
@@ -71,6 +72,53 @@ string Address::getPostalNumber() const{
 //------------------------------------------------------------------------------
 string Address::getCity() const{
 	return city;
+}
+
+//------------------------------------------------------------------------------
+// overloaded == operator
+//
+//------------------------------------------------------------------------------
+bool Address::operator==(const Address &address) const {
+	return streetAddress == address.getStreetAdress() &&
+			city == address.getCity() &&
+			postalNumber == address.getPostalNumber();
+}
+
+//------------------------------------------------------------------------------
+// overloaded < operator
+//
+//------------------------------------------------------------------------------
+bool Address::operator<(const Address &address) const {
+	if (city < address.getCity()) {
+		return true;
+	} else if (city == address.getCity()) {
+		if(streetAddress < address.getStreetAdress()){
+			return true;
+		}
+	}
+	return false;
+}
+
+ostream &operator<<(ostream &os, const Address &address){
+	os << setw(2) << address.getStreetAdress() << " " << setw(2) <<
+			address.getPostalNumber() << " " << setw(2) << address.getCity();
+	return os;
+}
+
+istream &operator>>(istream &is, Address &address){
+	string tmpStreetAddress;
+	string tmpPostalNumber;
+	string tmpCity;
+	cout << "Street Address: ";
+	is >> tmpStreetAddress;
+	cout << "Postal Number: ";
+	is >> tmpPostalNumber;
+	cout << "City: ";
+	is >> tmpCity;
+	address.setStreetAddress(tmpStreetAddress);
+	address.setPostalNumber(tmpPostalNumber);
+	address.setCity(tmpCity);
+	return is;
 }
 
 
