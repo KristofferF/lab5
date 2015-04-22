@@ -22,41 +22,41 @@ int main() {
 //	vector<string> answers(entries.size(), "");
 //	createExamples(personelRegister);
 //	selection(personelRegister, entries, answers);
-	Person person;
-	cin>>person;
-	cout<<person;
-
-	Person person2;
-	cin>>person2;
-	cout<<person2;
-
-	if(person < person2){
-				cout<<"true"<<endl;
-			}
-			else{
-				cout<<"false"<<endl;
-			}
-
+//	Person person;
+//	cin>>person;
+//	cout<<person;
+//
+//	Person person2;
+//	cin>>person2;
+//	cout<<person2;
+//
+//	if(person < person2){
+//				cout<<"true"<<endl;
+//			}
+//			else{
+//				cout<<"false"<<endl;
+//			}
+//
 
 	Name name = Name("Kristoffer", "Freiholtz");
 	Name name1 = Name("ristoffer", "Freiholtz");
-	Address address = Address("lindholmsallen", "41753", "Gothenburg");
-	Address address1 = Address("lindholmsallen", "41753", "Aothenburg");
-	if(address < address1){
-			cout<<"true"<<endl;
-		}
-		else{
-			cout<<"false"<<endl;
-		}
-	cout<<address<<endl;
-	cin>>address;
-	cout<<address<<endl;
-	if(address < address1){
-		cout<<"true"<<endl;
-	}
-	else{
-		cout<<"false"<<endl;
-	}
+//	Address address = Address("lindholmsallen", "41753", "Gothenburg");
+//	Address address1 = Address("lindholmsallen", "41753", "Aothenburg");
+//	if(address < address1){
+//			cout<<"true"<<endl;
+//		}
+//		else{
+//			cout<<"false"<<endl;
+//		}
+//	cout<<address<<endl;
+//	cin>>address;
+//	cout<<address<<endl;
+//	if(address < address1){
+//		cout<<"true"<<endl;
+//	}
+//	else{
+//		cout<<"false"<<endl;
+//	}
 
 
 	cout<<name<<endl;

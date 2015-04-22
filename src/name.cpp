@@ -79,11 +79,19 @@ bool Name::operator<(const Name &name) const {
 	return false;
 }
 
+//------------------------------------------------------------------------------
+// overloaded << operator
+//
+//------------------------------------------------------------------------------
 ostream &operator<<(ostream &os, const Name &name){
-	os << setw(2) << name.getFirstName() << " " << setw(2) << name.getLastName();
+	os  << name.getFirstName() << " "  << name.getLastName();
 	return os;
 }
 
+//------------------------------------------------------------------------------
+// overloaded >> operator
+//
+//------------------------------------------------------------------------------
 istream &operator>>(istream &is, Name &name){
 	string tmpFirstName;
 	string tmpLastName;

@@ -6,7 +6,7 @@
  */
 
 #include "person.h"
-#include<iomanip>
+#include <iomanip>
 
 //------------------------------------------------------------------------------
 // Förvald konstruktor (Default constructor)
@@ -115,12 +115,20 @@ bool Person::operator<(const Person &person) const {
 	return false;
 }
 
+//------------------------------------------------------------------------------
+// overloaded << operator
+//
+//------------------------------------------------------------------------------
 ostream &operator<<(ostream &os, const Person &person){
-	os << setw(2) << person.getName() << " " << setw(2) << person.getAddress()
-			<< " " << setw(2) << person.getPersNr() << " " << setw(2) << person.getShoeSize();
+	os  << person.getName() << endl  << person.getAddress()
+			<< endl  << person.getPersNr() << endl  << person.getShoeSize();
 	return os;
 }
 
+//------------------------------------------------------------------------------
+// overloaded >> operator
+//
+//------------------------------------------------------------------------------
 istream &operator>>(istream &is, Person &person){
 	Name tmpName;
 	Address tmpAddress;

@@ -99,12 +99,20 @@ bool Address::operator<(const Address &address) const {
 	return false;
 }
 
+//------------------------------------------------------------------------------
+// overloaded << operator
+//
+//------------------------------------------------------------------------------
 ostream &operator<<(ostream &os, const Address &address){
-	os << setw(2) << address.getStreetAdress() << " " << setw(2) <<
-			address.getPostalNumber() << " " << setw(2) << address.getCity();
+	os << address.getStreetAdress() << " " << address.getPostalNumber()
+			<< " " << address.getCity();
 	return os;
 }
 
+//------------------------------------------------------------------------------
+// overloaded >> operator
+//
+//------------------------------------------------------------------------------
 istream &operator>>(istream &is, Address &address){
 	string tmpStreetAddress;
 	string tmpPostalNumber;
