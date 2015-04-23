@@ -9,7 +9,7 @@
 #include <iomanip>
 
 //------------------------------------------------------------------------------
-// FoÌˆrvald konstruktor (Default constructor)
+// Förvald konstruktor (Default constructor)
 //------------------------------------------------------------------------------
 Person::Person(){
 	persNr = "";
@@ -17,7 +17,7 @@ Person::Person(){
 }
 
 //------------------------------------------------------------------------------
-// Konstruktor foÌˆr initiering av datamedlemmarna
+// Konstruktor för initiering av datamedlemmarna
 //------------------------------------------------------------------------------
 Person::Person(const string firstName, const string lastName, const string streetAddress, const string postalNumber,
 			const string city, const string persNr, const int shoeSize){
@@ -29,7 +29,7 @@ Person::Person(const string firstName, const string lastName, const string stree
 
 //------------------------------------------------------------------------------
 // setName
-// Datamedlemmen name ges vÃ¤rdet av parametern name
+// Datamedlemmen name ges värdet av parametern name
 //------------------------------------------------------------------------------
 void Person::setName(const Name name){
 	this->name = name;
@@ -37,7 +37,7 @@ void Person::setName(const Name name){
 
 //------------------------------------------------------------------------------
 // setAddress
-// Datamedlemmen address ges vÃ¤rdet av parametern address
+// Datamedlemmen address ges värdet av parametern address
 //------------------------------------------------------------------------------
 void Person::setAddress(const Address address){
 	this->address = address;
@@ -45,14 +45,14 @@ void Person::setAddress(const Address address){
 
 //------------------------------------------------------------------------------
 // setPersNr
-// Datamedlemmen persNr ges vÃ¤rdet av parametern persNr
+// Datamedlemmen persNr ges värdet av parametern persNr
 //------------------------------------------------------------------------------
 void Person::setPersNr(const string persNr){
 	this->persNr = persNr;
 }
 
 //------------------------------------------------------------------------------
-// ssetShoeSize
+// setShoeSize
 // Datamedlemmen shoeSize ges vÃ¤rdet av parametern shoeSize
 //------------------------------------------------------------------------------
 void Person::setShoeSize(const int shoeSize){
@@ -136,9 +136,7 @@ istream &operator>>(istream &is, Person &person){
 	int tmpShoeSize;
 	is >> tmpName;
 	is >> tmpAddress;
-	cout << "Personal number: ";
 	is >> tmpPersNr;
-	cout << "Shoe Size: ";
 	is >> tmpShoeSize;
 	person.setName(tmpName);
 	person.setAddress(tmpAddress);

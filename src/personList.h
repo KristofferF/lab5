@@ -23,6 +23,7 @@ private:
 	string fileName;
 
 public:
+	PersonList();
 	string getFileName();
 	void setFileName(const string fileName);
 	void addPerson(const Person person);

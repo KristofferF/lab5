@@ -7,16 +7,32 @@
 //============================================================================
 
 #include "person.h"
+#include "personlist.h"
+
 #include <iostream>
 #include <vector>
 using namespace std;
 
-void createExamples(vector<Person>& personelRegister);
+void createExamples(PersonList& list);
 void selection(vector<Person>& personelRegister, vector<string>& entries, vector<string>& answers);
 void addData(vector<Person>& personelRegister, vector<string>& entries, vector<string>& answers);
 void showData(vector<Person>& personelRegister);
 
 int main() {
+	PersonList list;
+	//createExamples(list);
+	list.readFromFile();
+	cout<<"Before loop"<<endl;
+	for (int i = 0; i < list.getSize(); i++){
+		cout << list.getPerson(i);
+		cout<<"In loop " + i<<endl;
+	}
+	cout<<"After loop"<<endl;
+	list.sortShoeSize();
+	list.setFileName("list2.txt");
+	list.writeToFile();
+
+
 //	vector<Person> personelRegister;
 //	vector<string> entries = {"first name", "last name", "address", "postal number", "city", "personal number"};
 //	vector<string> answers(entries.size(), "");
@@ -38,8 +54,8 @@ int main() {
 //			}
 //
 
-	Name name = Name("Kristoffer", "Freiholtz");
-	Name name1 = Name("ristoffer", "Freiholtz");
+//	Name name = Name("Kristoffer", "Freiholtz");
+//	Name name1 = Name("ristoffer", "Freiholtz");
 //	Address address = Address("lindholmsallen", "41753", "Gothenburg");
 //	Address address1 = Address("lindholmsallen", "41753", "Aothenburg");
 //	if(address < address1){
@@ -59,25 +75,25 @@ int main() {
 //	}
 
 
-	cout<<name<<endl;
-	cin>>name;
-	cout<<name<<endl;
-	if(name < name1){
-		cout<<"true"<<endl;
-	}
-	else{
-		cout<<"false"<<endl;
-	}
+//	cout<<name<<endl;
+//	cin>>name;
+//	cout<<name<<endl;
+//	if(name < name1){
+//		cout<<"true"<<endl;
+//	}
+//	else{
+//		cout<<"false"<<endl;
+//	}
 	return 0;
 }
 
 ////------------------------------------------------------------------------------
 //// Skapa tre exempel personer
 ////------------------------------------------------------------------------------
-void createExamples(vector<Person>& personelRegister){
-	personelRegister.push_back (Person("Kristoffer", "Freiholtz", "Lindholmsallen 37", "41756", "Gï¿½teborg", "870316-5996", 42));
-	personelRegister.push_back (Person("Anders", "Karlsson", "Ekgatan 2", "53592", "Vara", "650403-6745", 43));
-	personelRegister.push_back (Person("Linda", "Gï¿½ransson", "Storgatan 4", "65743", "Linkï¿½ping", "781121-1876", 37));
+void createExamples(PersonList& list){
+	list.addPerson(Person("Kristoffer", "Freiholtz", "Lindholmsallen 37", "41756", "Göteborg", "870316-5996", 42));
+	list.addPerson(Person("Anders", "Karlsson", "Ekgatan 2", "53592", "Vara", "650403-6745", 43));
+	list.addPerson(Person("Linda", "Göransson", "Storgatan 4", "65743", "Linköping", "781121-1876", 37));
 }
 
 ////------------------------------------------------------------------------------

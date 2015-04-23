@@ -115,15 +115,14 @@ ostream &operator<<(ostream &os, const Address &address){
 //------------------------------------------------------------------------------
 istream &operator>>(istream &is, Address &address){
 	string tmpStreetAddress;
+	string tmpStreetAddressNumber;
 	string tmpPostalNumber;
 	string tmpCity;
-	cout << "Street Address: ";
 	is >> tmpStreetAddress;
-	cout << "Postal Number: ";
+	is >> tmpStreetAddressNumber;
 	is >> tmpPostalNumber;
-	cout << "City: ";
 	is >> tmpCity;
-	address.setStreetAddress(tmpStreetAddress);
+	address.setStreetAddress(tmpStreetAddress + " " + tmpStreetAddressNumber);
 	address.setPostalNumber(tmpPostalNumber);
 	address.setCity(tmpCity);
 	return is;

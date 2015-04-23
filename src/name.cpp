@@ -95,9 +95,7 @@ ostream &operator<<(ostream &os, const Name &name){
 istream &operator>>(istream &is, Name &name){
 	string tmpFirstName;
 	string tmpLastName;
-	cout << "First Name: ";
 	is >> tmpFirstName;
-	cout << "Last Name: ";
 	is >> tmpLastName;
 	name.setFirstName(tmpFirstName);
 	name.setLastName(tmpLastName);
