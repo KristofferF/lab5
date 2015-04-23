@@ -14,7 +14,6 @@
 //------------------------------------------------------------------------------
 PersonList::PersonList(){
 	fileName = "list.txt";
-	vector<Person> persons;
 }
 
 //------------------------------------------------------------------------------
@@ -105,6 +104,7 @@ void PersonList::sortShoeSize(){
 // Läs från filen med namnet fileName
 //------------------------------------------------------------------------------
 void PersonList::readFromFile(){
+	persons.clear();
 	fstream inFile(fileName, ios::in);
 	Person tmpPerson;
 	while(inFile >> tmpPerson){
@@ -123,4 +123,14 @@ void PersonList::writeToFile(){
 		outFile << person << endl;
 	}
 	outFile.close();
+}
+
+//------------------------------------------------------------------------------
+// printList
+// Skriver ut alla personer i listan
+//------------------------------------------------------------------------------
+void PersonList::printList(){
+	for(Person person : persons){
+		cout << person << endl << endl;
+	}
 }

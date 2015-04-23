@@ -9,7 +9,7 @@
 #include<iomanip>
 
 //------------------------------------------------------------------------------
-// FoÌˆrvald konstruktor (Default constructor)
+// Förvald konstruktor (Default constructor)
 //------------------------------------------------------------------------------
 Address::Address(){
 	streetAddress = "";
@@ -18,7 +18,7 @@ Address::Address(){
 }
 
 //------------------------------------------------------------------------------
-// Konstruktor foÌˆr initiering av datamedlemmarna
+// Konstruktor för initiering av datamedlemmarna
 //------------------------------------------------------------------------------
 Address::Address(const string streetAddress, const string postalNumber, const string city){
 	this->streetAddress = streetAddress;
@@ -28,7 +28,7 @@ Address::Address(const string streetAddress, const string postalNumber, const st
 
 //------------------------------------------------------------------------------
 // setAddress
-// Datamedlemmen address ges vÃ¤rdet av parametern address
+// Datamedlemmen address ges värdet av parametern address
 //------------------------------------------------------------------------------
 void Address::setStreetAddress(const string streetAddress){
 	this->streetAddress = streetAddress;
@@ -36,7 +36,7 @@ void Address::setStreetAddress(const string streetAddress){
 
 //------------------------------------------------------------------------------
 // setPostalNumber
-// Datamedlemmen postalNumber ges vÃ¤rdet av parametern postalNumber
+// Datamedlemmen postalNumber ges värdet av parametern postalNumber
 //------------------------------------------------------------------------------
 void Address::setPostalNumber(const string postalNumber){
 	this->postalNumber = postalNumber;
@@ -44,7 +44,7 @@ void Address::setPostalNumber(const string postalNumber){
 
 //------------------------------------------------------------------------------
 // setCity
-// Datamedlemmen city ges vÃ¤rdet av parametern city
+// Datamedlemmen city ges värdet av parametern city
 //------------------------------------------------------------------------------
 void Address::setCity(const string city){
 	this->city = city;

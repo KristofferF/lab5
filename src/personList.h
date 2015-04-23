@@ -9,10 +9,8 @@
 #define PERSON_LIST_H_
 
 #include "person.h"
-
 #include <vector>
 #include <string>
-#include <iostream>
 
 using namespace std;
 
@@ -34,6 +32,7 @@ public:
 	void sortShoeSize();
 	void readFromFile();
 	void writeToFile();
+	void printList();
 };
 
 #endif /* PERSON_LIST_H_ */

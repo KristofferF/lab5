@@ -9,7 +9,7 @@
 #include<iomanip>
 
 //------------------------------------------------------------------------------
-// FoÌˆrvald konstruktor (Default constructor)
+// Förvald konstruktor (Default constructor)
 //------------------------------------------------------------------------------
 Name::Name() {
 	firstName = "";
@@ -17,7 +17,7 @@ Name::Name() {
 }
 
 //------------------------------------------------------------------------------
-// Konstruktor foÌˆr initiering av datamedlemmarna
+// Konstruktor föˆr initiering av datamedlemmarna
 //------------------------------------------------------------------------------
 Name::Name(const string firstName, const string lastName) {
 	this->firstName = firstName;
@@ -26,7 +26,7 @@ Name::Name(const string firstName, const string lastName) {
 
 //------------------------------------------------------------------------------
 // setFirstName
-// Datamedlemmen firstName ges vÃ¤rdet av parametern firstName
+// Datamedlemmen firstName ges värdet av parametern firstName
 //------------------------------------------------------------------------------
 void Name::setFirstName(const string firstName){
 	this->firstName = firstName;
@@ -34,7 +34,7 @@ void Name::setFirstName(const string firstName){
 
 //------------------------------------------------------------------------------
 // setLastName
-// Datamedlemmen lastName ges vÃ¤rdet av parametern lastName
+// Datamedlemmen lastName ges värdet av parametern lastName
 //------------------------------------------------------------------------------
 void Name::setLastName(const string lastName) {
 	this->lastName = lastName;
