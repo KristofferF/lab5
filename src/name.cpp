@@ -7,6 +7,7 @@
 
 #include"name.h"
 #include<iomanip>
+extern const char DELIM = '|';
 
 //------------------------------------------------------------------------------
 // Förvald konstruktor (Default constructor)
@@ -84,7 +85,7 @@ bool Name::operator<(const Name &name) const {
 //
 //------------------------------------------------------------------------------
 ostream &operator<<(ostream &os, const Name &name){
-	os  << name.getFirstName() << " "  << name.getLastName();
+	os  << name.getFirstName() << DELIM  << name.getLastName() << DELIM;
 	return os;
 }
 
@@ -95,8 +96,8 @@ ostream &operator<<(ostream &os, const Name &name){
 istream &operator>>(istream &is, Name &name){
 	string tmpFirstName;
 	string tmpLastName;
-	is >> tmpFirstName;
-	is >> tmpLastName;
+	getline(is, tmpFirstName, DELIM);
+	getline(is, tmpLastName, DELIM);
 	name.setFirstName(tmpFirstName);
 	name.setLastName(tmpLastName);
 	return is;

@@ -12,7 +12,7 @@
 #include "address.h"
 
 #include <string>
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 class Person{

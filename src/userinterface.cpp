@@ -26,7 +26,7 @@ void UserInterface::menu(){
 	while(active){
 		cout << endl << "1. Enter data for a new person\n2. Show all data"
 				"\n3. Save to file\n4. Load from file\n5. Sort by name\n6. Sort by personel number"
-				"\n7. sort by shoe size\n8. Exit\nChoose an alternative: ";
+				"\n7. Sort by shoe size\n8. Exit\nChoose an alternative: ";
 		cin >> selection;
 		while(cin.fail() || selection < 1 || selection > 8){
 			cin.clear();
@@ -120,7 +120,7 @@ void UserInterface::inputFileName(string direction) {
 // Sparar listan till en fil med namnet från parametern fileName
 //------------------------------------------------------------------------------
 void UserInterface::writeToFile(){
-	inputFileName("save to:");
+	inputFileName("save to: ");
 	list.writeToFile();
 }
 
@@ -130,7 +130,7 @@ void UserInterface::writeToFile(){
 // Laddar en lista från filen med namnet från parametern fileName
 //------------------------------------------------------------------------------
 void UserInterface::readFromFile(){
-	inputFileName("read from:");
+	inputFileName("read from: ");
 	list.readFromFile();
 }
 

@@ -96,8 +96,7 @@ int Person::getShoeSize() const{
 //
 //------------------------------------------------------------------------------
 bool Person::operator==(const Person &person) const {
-	//return name == person.getName;// && address == person.getAddress && persNr == person.getPersNr() && shoeSize == person.getShoeSize();
-	return true;
+	return name == person.getName() && address == person.getAddress() && persNr == person.getPersNr() && shoeSize == person.getShoeSize();
 }
 
 //------------------------------------------------------------------------------
@@ -135,9 +134,13 @@ istream &operator>>(istream &is, Person &person){
 	string tmpPersNr;
 	int tmpShoeSize;
 	is >> tmpName;
+	is.ignore();
 	is >> tmpAddress;
+	is.ignore();
 	is >> tmpPersNr;
+	is.ignore();
 	is >> tmpShoeSize;
+	is.ignore();
 	person.setName(tmpName);
 	person.setAddress(tmpAddress);
 	person.setPersNr(tmpPersNr);

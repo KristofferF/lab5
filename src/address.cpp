@@ -7,6 +7,7 @@
 
 #include"address.h"
 #include<iomanip>
+extern const char DELIM;
 
 //------------------------------------------------------------------------------
 // Förvald konstruktor (Default constructor)
@@ -104,8 +105,8 @@ bool Address::operator<(const Address &address) const {
 //
 //------------------------------------------------------------------------------
 ostream &operator<<(ostream &os, const Address &address){
-	os << address.getStreetAdress() << " " << address.getPostalNumber()
-			<< " " << address.getCity();
+	os << address.getStreetAdress() << DELIM << address.getPostalNumber()
+			<< DELIM << address.getCity() << DELIM;
 	return os;
 }
 
@@ -115,14 +116,12 @@ ostream &operator<<(ostream &os, const Address &address){
 //------------------------------------------------------------------------------
 istream &operator>>(istream &is, Address &address){
 	string tmpStreetAddress;
-	string tmpStreetAddressNumber;
 	string tmpPostalNumber;
 	string tmpCity;
-	is >> tmpStreetAddress;
-	is >> tmpStreetAddressNumber;
-	is >> tmpPostalNumber;
-	is >> tmpCity;
-	address.setStreetAddress(tmpStreetAddress + " " + tmpStreetAddressNumber);
+	getline(is, tmpStreetAddress, DELIM);
+	getline(is, tmpPostalNumber, DELIM);
+	getline(is, tmpCity, DELIM);
+	address.setStreetAddress(tmpStreetAddress);
 	address.setPostalNumber(tmpPostalNumber);
 	address.setCity(tmpCity);
 	return is;

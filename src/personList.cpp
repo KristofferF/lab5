@@ -131,6 +131,10 @@ void PersonList::writeToFile(){
 //------------------------------------------------------------------------------
 void PersonList::printList(){
 	for(Person person : persons){
-		cout << person << endl << endl;
+		cout << person.getName().getFirstName() << " " << person.getName().getLastName() << endl
+				<< person.getAddress().getStreetAdress() << endl
+				<< person.getAddress().getPostalNumber() << " " << person.getAddress().getCity() << endl
+				<< person.getPersNr() << endl
+				<< "Shoe Size: " << person.getShoeSize() << endl << endl;
 	}
 }
