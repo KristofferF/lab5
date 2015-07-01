@@ -6,10 +6,10 @@
 // Description : C++, Ansi-style
 //============================================================================
 
-#include "userinterface.h"
+#include "HousingQ.h"
 
 int main() {
-	UserInterface userInterface;
+	HousingQ userInterface;
 	userInterface.run();
 	return 0;
 }

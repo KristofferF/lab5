@@ -28,17 +28,21 @@ Item &QIterator::operator*() const{
 }
 
 QIterator &QIterator::operator++(){
-	// ++
+	node = node->next;
 	return *this;
 }
 
 QIterator QIterator::operator++(int){
-	return *this;
-	// ++
+	QIterator tmp = *this;
+	node = node->next;
+	return tmp;
 }
 
 bool QIterator::operator!=(const QIterator &qi) const{
-	//return this == qi;
+	if(this->node == qi.node){
+		return false;
+	}
+	return true;
 }
 
 QList::~QList(){
@@ -46,25 +50,35 @@ QList::~QList(){
 }
 
 void QList::enque(Item item){
-	last = new Node(nullptr, item);
-	if(first == nullptr){
-		first = last;
+	if(isEmpty()){
+		first = new Node(nullptr, item);
+		last = first;
+	}
+	else{
+		Node* tmp = new Node(nullptr, item);
+		last->next = tmp;
+		last = tmp;
 	}
 }
 
 bool QList::deque(Item &item){
-//	if(!isEmpty()){
-//		item = first->data;
-//		if(first == last){
-//			last = nullptr;
-//		}
-//		delete first;
-//		first = nullptr;
-//	}
-//	else{
-//		return false;
-//	}
-
+	if(!isEmpty()){
+		item = first->data;
+		if(first->next == nullptr){
+			delete first;
+			last = nullptr;
+			first = nullptr;
+		}
+		else{
+			Node* tmp = first->next;
+			delete first;
+			first = tmp;
+		}
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 
 bool QList::del(Item item){
@@ -72,7 +86,6 @@ bool QList::del(Item item){
 }
 
 bool QList::isEmpty()const{
-
+	return (first == nullptr && last == nullptr);
 }
 
-// Fyll på med funktionsdefinitioner för medlemsfunktionerna i QIterator och // QList nedan!

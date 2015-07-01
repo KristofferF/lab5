@@ -8,13 +8,16 @@
 #ifndef USER_INTERFACE_H_
 #define USER_INTERFACE_H_
 
-#include "personlist.h"
+#include "personList.h"
 #include "queue.h"
 
-class UserInterface{
+class HousingQ{
 
 private:
 	QList qList;
+	int size;
+    string fileName;
+
 	PersonList list;
 	void menu();
 	void enque();

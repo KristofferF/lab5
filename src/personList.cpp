@@ -5,12 +5,12 @@
  *      Author: kristoffer
  */
 
-#include "personlist.h"
+#include "personList.h"
 #include <algorithm>
 #include <fstream>
 
 //------------------------------------------------------------------------------
-// Förvald konstruktor (Default constructor)
+// Fï¿½rvald konstruktor (Default constructor)
 //------------------------------------------------------------------------------
 PersonList::PersonList(){
 	fileName = "list.txt";
@@ -26,7 +26,7 @@ string PersonList::getFileName(){
 
 //------------------------------------------------------------------------------
 // setFileName
-// Datamedlemmen fileName ges värdet av parametern fileName
+// Datamedlemmen fileName ges vï¿½rdet av parametern fileName
 //------------------------------------------------------------------------------
 void PersonList::setFileName(const string fileName){
 	this->fileName = fileName;
@@ -34,7 +34,7 @@ void PersonList::setFileName(const string fileName){
 
 //------------------------------------------------------------------------------
 // addPerson
-// Lägger till ett Personobjekt i slutet på listan
+// Lï¿½gger till ett Personobjekt i slutet pï¿½ listan
 //------------------------------------------------------------------------------
 void PersonList::addPerson(const Person person){
 	persons.push_back(person);
@@ -53,7 +53,7 @@ Person PersonList::getPerson(const size_t index) const{
 
 //------------------------------------------------------------------------------
 // getSize
-// Returnerar storleken på listan
+// Returnerar storleken pï¿½ listan
 //------------------------------------------------------------------------------
 int PersonList::getSize() const{
 	return persons.size();
@@ -61,7 +61,7 @@ int PersonList::getSize() const{
 
 //------------------------------------------------------------------------------
 // sortName
-// Sortera listan med avseende på namn
+// Sortera listan med avseende pï¿½ namn
 //------------------------------------------------------------------------------
 void PersonList::sortName(){
 	sort(persons.begin(), persons.end());
@@ -69,7 +69,7 @@ void PersonList::sortName(){
 
 //------------------------------------------------------------------------------
 // sortByPersNr
-// Jämförelse funktion för SortPersNr
+// Jï¿½mfï¿½relse funktion fï¿½r SortPersNr
 //------------------------------------------------------------------------------
 bool sortByPersNr(Person p1, Person p2) {
 	return p1.getPersNr() < p2.getPersNr();
@@ -77,7 +77,7 @@ bool sortByPersNr(Person p1, Person p2) {
 
 //------------------------------------------------------------------------------
 // sortPersNr
-// Sortera listan med avseende på personnummer
+// Sortera listan med avseende pï¿½ personnummer
 //------------------------------------------------------------------------------
 void PersonList::sortPersNr(){
 	sort(persons.begin(), persons.end(), sortByPersNr);
@@ -85,7 +85,7 @@ void PersonList::sortPersNr(){
 
 //------------------------------------------------------------------------------
 // sortByPersNr
-// Jämförelse funktion för SortShoeSize
+// Jï¿½mfï¿½relse funktion fï¿½r SortShoeSize
 //------------------------------------------------------------------------------
 bool sortByShoeSize(Person p1, Person p2) {
 	return p1.getShoeSize() < p2.getShoeSize();
@@ -93,7 +93,7 @@ bool sortByShoeSize(Person p1, Person p2) {
 
 //------------------------------------------------------------------------------
 // sortShoeSize
-// Sortera listan med avseende på skostorlek
+// Sortera listan med avseende pï¿½ skostorlek
 //------------------------------------------------------------------------------
 void PersonList::sortShoeSize(){
 	sort(persons.begin(), persons.end(), sortByShoeSize);
@@ -101,7 +101,7 @@ void PersonList::sortShoeSize(){
 
 //------------------------------------------------------------------------------
 // readFromFile
-// Läs från filen med namnet fileName
+// Lï¿½s frï¿½n filen med namnet fileName
 //------------------------------------------------------------------------------
 void PersonList::readFromFile(){
 	persons.clear();
