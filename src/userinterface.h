@@ -9,14 +9,19 @@
 #define USER_INTERFACE_H_
 
 #include "personlist.h"
+#include "queue.h"
 
 class UserInterface{
 
 private:
+	QList qList;
 	PersonList list;
 	void menu();
-	void addPerson();
-	void printList();
+	void enque();
+	void offerHousing();
+	void printQueue();
+	void printInfo();
+	void deque();
 	void writeToFile();
 	void readFromFile();
 	void sortName();

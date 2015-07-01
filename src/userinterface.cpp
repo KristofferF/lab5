@@ -22,28 +22,28 @@ void UserInterface::run(){
 void UserInterface::menu(){
 	int selection = 0;
 	bool active = true;
-	cout << "Welcome to the personnel register" << endl;
+	cout << "Välkommen till bostadskön" << endl;
 	while(active){
-		cout << endl << "1. Enter data for a new person\n2. Show all data"
-				"\n3. Save to file\n4. Load from file\n5. Sort by name\n6. Sort by personel number"
-				"\n7. Sort by shoe size\n8. Exit\nChoose an alternative: ";
+		cout << endl << "1. Ställ en person sist i bostadskön\n2. Erbjud en person bostad"
+				"\n3. Skriv ut hela bostadskön\n4. Skriv ut data om en person\n5. Ta bort en person ur bostadskön\n6. Spara kön"
+				"\n7. Avsluta\nChoose an alternative: ";
 		cin >> selection;
-		while(cin.fail() || selection < 1 || selection > 8){
+		while(cin.fail() || selection < 1 || selection > 7){
 			cin.clear();
 			cin.ignore(256,'\n');
-			cout << "You have to enter a valid choice. Please enter your selection again: ";
+			cout << "Du måste välja ett giltigt val. Försök igen: ";
 			cin >> selection;
 		}
 		cout << endl;
 		switch (selection){
 		case 1:
-			addPerson();
+			enque();
 			break;
 		case 2:
-			printList();
+			offerHousing();
 			break;
 		case 3:
-			writeToFile();
+			printQueue();
 			break;
 		case 4:
 			readFromFile();
@@ -52,24 +52,22 @@ void UserInterface::menu(){
 			sortName();
 			break;
 		case 6:
+			writeToFile();
 			sortPersNr();
 			break;
 		case 7:
-			sortShoeSize();
-			break;
-		case 8:
 			active = false;
 			break;
 		}
 	}
-	cout << "Thanks for using personnel register" << endl;
+	cout << "Tack för att du använde bostadskön" << endl;
 }
 
 //------------------------------------------------------------------------------
-// addPerson
-// Lägger till ett Personobjekt i slutet på listan
+// enque
+// Lägger till ett Personobjekt i slutet på kölistan
 //------------------------------------------------------------------------------
-void UserInterface::addPerson(){
+void UserInterface::enque(){
 	vector<string> entries = {"first name", "last name", "address", "postal number", "city", "personal number"};
 	vector<string> answers(entries.size(), "");
 	int shoeSize = 0;
@@ -86,15 +84,44 @@ void UserInterface::addPerson(){
 		cout << "You have to enter a number between 1-60. Please enter your selection again: ";
 		cin >> shoeSize;
 	}
-	list.addPerson(Person(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], shoeSize));
+	qList.enque(Person(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], shoeSize));
 }
 
 //------------------------------------------------------------------------------
-// printList
-// Skriver ut listan med personer
+// offerHousing
+// Skapa erbjudande om bostad till en person
 //------------------------------------------------------------------------------
-void UserInterface::printList(){
-	list.printList();
+void UserInterface::offerHousing(){
+
+}
+
+//------------------------------------------------------------------------------
+// printQueue
+// Skriver ut bostadskön
+//------------------------------------------------------------------------------
+void UserInterface::printQueue(){
+
+}
+
+//------------------------------------------------------------------------------
+// printInfo
+// Skriver ut information om en person
+//------------------------------------------------------------------------------
+void UserInterface::printInfo(){
+
+}
+
+//------------------------------------------------------------------------------
+// deque
+// Tar bort ett Personobjekt ur kölistan
+//------------------------------------------------------------------------------
+void UserInterface::deque(){
+	printQueue(); // med siffror framför
+
+//	cout << "Ange namnet på den pers: ";
+//	getline(cin, answers[i]);
+
+	//qList.deque();
 }
 
 //------------------------------------------------------------------------------
