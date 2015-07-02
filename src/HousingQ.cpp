@@ -15,10 +15,10 @@
 void HousingQ::run(){
     fileName = "HousingQueue.txt"; // TODO Make CONST
     //readFromFile(); // TODO FIX
-    qList.enque(Person("A", "A", "A", "A", "A", "A", 45));
-    qList.enque(Person("B", "A", "A", "A", "A", "A", 45));
-    qList.enque(Person("C", "A", "A", "A", "A", "A", 45));
-    qList.enque(Person("D", "A", "A", "A", "A", "A", 45));
+    qList.enque(Person("A", "A", "A", "A", "A", "1", 45));
+    qList.enque(Person("B", "A", "A", "A", "A", "2", 45));
+    qList.enque(Person("C", "A", "A", "A", "A", "3", 45));
+    qList.enque(Person("D", "A", "A", "A", "A", "4", 45));
     size = 4;
     menu();
 }
@@ -54,14 +54,13 @@ void HousingQ::menu(){
 			printQueue();
 			break;
 		case 4:
-			readFromFile();
+			printInfo();
 			break;
 		case 5:
-			sortName();
+			removeFromQueue();
 			break;
 		case 6:
 			writeToFile();
-			sortPersNr();
 			break;
 		case 7:
 			active = false;
@@ -95,13 +94,14 @@ void HousingQ::enque(){
 //	qList.enque(Person(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], shoeSize));
     vector<string> entries = {"first name"};
 	vector<string> answers(entries.size(), "");
-	int shoeSize = 0;
 	cin.ignore();
 	for(size_t i = 0; i < entries.size(); i++){
 		cout << "Enter " << entries[i] << ": ";
 		getline(cin, answers[i]);
 	}
-    qList.enque(Person(answers[0], "A", "A", "A", "A", "A", 45));
+    qList.enque(Person(answers[0], "A", "A", "A", "A", "5", 45));
+
+
     size++;
 }
 
@@ -118,7 +118,7 @@ void HousingQ::offerHousing(){
     else{
         cout << "Det finns inga personer i bostadskÃ¶n!" << endl;
     }
-
+	size--;
 }
 
 //------------------------------------------------------------------------------
@@ -126,15 +126,19 @@ void HousingQ::offerHousing(){
 // Skriver ut bostadskï¿½n
 //------------------------------------------------------------------------------
 void HousingQ::printQueue(){
-    cout << "Skriver ut hela bostadskÃ¶n: " << endl << endl;
-    int i = 1;
-    for(auto it=qList.begin(); it!=qList.end(); it++){
-        cout << i << ":" << (*it).getName().getFirstName() << " " << (*it).getName().getLastName() << endl <<
-                (*it).getAddress().getStreetAdress() << endl << (*it).getAddress().getPostalNumber() <<
-                " " << (*it).getAddress().getCity() << endl << (*it).getPersNr() << endl << endl;
-        i++;
-    }
-
+	if(!qList.isEmpty()){
+		cout << "Skriver ut hela bostadskÃ¶n, antal: " << size << endl << endl;
+		int i = 1;
+		for(auto it=qList.begin(); it!=qList.end(); it++){
+			cout << i << ":" << (*it).getName().getFirstName() << " " << (*it).getName().getLastName() << endl <<
+					(*it).getAddress().getStreetAdress() << endl << (*it).getAddress().getPostalNumber() <<
+					" " << (*it).getAddress().getCity() << endl << (*it).getPersNr() << endl << endl;
+			i++;
+		}
+	}
+	else{
+		cout << "Det finns inga personer i bostadskÃ¶n!" << endl;
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -142,37 +146,66 @@ void HousingQ::printQueue(){
 // Skriver ut information om en person
 //------------------------------------------------------------------------------
 void HousingQ::printInfo(){
-
+	if(!qList.isEmpty()){
+		string persNr = selectPerson();
+		int i = 0;
+		for(auto it=qList.begin(); it!=qList.end(); it++){
+			i++;
+			if((*it).getPersNr() == persNr){
+				cout << i << ":" << (*it).getName().getFirstName() << " " << (*it).getName().getLastName() << endl <<
+						(*it).getAddress().getStreetAdress() << endl << (*it).getAddress().getPostalNumber() <<
+						" " << (*it).getAddress().getCity() << endl << (*it).getPersNr() << endl << endl;
+			}
+		}
+	}
+	else{
+		cout << "Det finns inga personer i bostadskÃ¶n!" << endl;
+	}
 }
 
 //------------------------------------------------------------------------------
 // deque
 // Tar bort ett Personobjekt ur kï¿½listan
 //------------------------------------------------------------------------------
-void HousingQ::deque(){
-	//printQueue(); // med siffror framfï¿½r
-
-//	cout << "Ange namnet pï¿½ den pers: ";
-//	getline(cin, answers[i]);
-
-	//qList.deque();
+void HousingQ::removeFromQueue(){
+	if(!qList.isEmpty()){
+		string persNr = selectPerson();
+		bool found = false;
+		for(auto it=qList.begin(); it!=qList.end(); it++){
+			if((*it).getPersNr() == persNr){
+				cout << "Tar bort " << (*it).getName().getFirstName() << " " << (*it).getName().getLastName() <<
+						endl << (*it).getPersNr() << endl;
+				found = true;
+				qList.del((*it));
+				size--;
+				break;
+			}
+		}
+		if(!found){
+			cout << "Kunde inte hitta någon person med det personnummret!" << endl;
+		}
+	}
+	else{
+		cout << "Det finns inga personer i bostadskÃ¶n!" << endl;
+	}
 }
 
 //------------------------------------------------------------------------------
 // inputFileName
 // Lï¿½ter anvï¿½ndaren mata in ett filnamn att lï¿½sa frï¿½n eller skriva till
 //------------------------------------------------------------------------------
-void HousingQ::inputFileName(string direction) {
-	cout << "Enter file name to " + direction;
-	string fileName;
-	cin >> fileName;
+string HousingQ::selectPerson() {
+	cout << "Mata in personnummer för aktuell person: ";
+	string persNr;
+	cin >> persNr;
 	while (cin.fail()) {
 		cin.clear();
 		cin.ignore(256, '\n');
-		cout << "Failed to read your input. Try again:";
-		cin >> fileName;
+		cout << "Läsning misslyckades. Var god försök igen:";
+		cin >> persNr;
 	}
-	list.setFileName(fileName);
+	return persNr;
+
 }
 
 
@@ -181,7 +214,7 @@ void HousingQ::inputFileName(string direction) {
 // Sparar listan till en fil med namnet frï¿½n parametern fileName
 //------------------------------------------------------------------------------
 void HousingQ::writeToFile(){
-	inputFileName("save to: ");
+	//TODO IMPLEMENT
 	list.writeToFile();
 }
 
@@ -191,33 +224,6 @@ void HousingQ::writeToFile(){
 // Laddar en lista frï¿½n filen med namnet frï¿½n parametern fileName
 //------------------------------------------------------------------------------
 void HousingQ::readFromFile(){
-
     //TODO IMPLEMENT
-	inputFileName("read from: ");
 	list.readFromFile();
 }
-
-//------------------------------------------------------------------------------
-// sortName
-// Sortera listan med avseende pï¿½ namn
-//------------------------------------------------------------------------------
-void HousingQ::sortName(){
-	list.sortName();
-}
-
-//------------------------------------------------------------------------------
-// sortPersNr
-// Sortera listan med avseende pï¿½ personnummer
-//------------------------------------------------------------------------------
-void HousingQ::sortPersNr(){
-	list.sortPersNr();
-}
-
-//------------------------------------------------------------------------------
-// sortShoeSize
-// Sortera listan med avseende pï¿½ skostorlek
-//------------------------------------------------------------------------------
-void HousingQ::sortShoeSize(){
-	list.sortShoeSize();
-}
-

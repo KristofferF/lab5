@@ -24,13 +24,10 @@ private:
 	void offerHousing();
 	void printQueue();
 	void printInfo();
-	void deque();
+	void removeFromQueue();
 	void writeToFile();
 	void readFromFile();
-	void sortName();
-	void sortPersNr();
-	void sortShoeSize();
-	void inputFileName(string direction);
+	string selectPerson();
 
 public:
 	void run();
