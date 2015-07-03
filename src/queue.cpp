@@ -54,34 +54,35 @@ Node* QIterator::getNext(){
 }
 
 QList::~QList(){
-
+	while(!isEmpty())
+	{
+		Node *tmp = first;
+		first = first->next;
+		delete tmp;
+	}
 }
 
 void QList::enque(Item item){
+	Node* tmp = new Node(nullptr, item);
 	if(isEmpty()){
-		first = new Node(nullptr, item);
-		last = first;
+		first = tmp;
 	}
 	else{
-		Node* tmp = new Node(nullptr, item);
 		last->next = tmp;
-		last = tmp;
 	}
+	last = tmp;
 }
 
 bool QList::deque(Item &item){
 	if(!isEmpty()){
-		item = first->data;
-		if(first->next == nullptr){
-			delete first;
-			last = nullptr;
+		Node* tmp = first;
+		item = tmp->data;
+		first = first->next;
+		if(isEmpty()){
 			first = nullptr;
+			last = nullptr;
 		}
-		else{
-			Node* tmp = first->next;
-			delete first;
-			first = tmp;
-		}
+		delete tmp;
 		return true;
 	}
 	else{
@@ -91,7 +92,14 @@ bool QList::deque(Item &item){
 
 bool QList::del(Item item){
 	cout << "test1" << endl;
+	Node* tmp = nullptr;
 	for(auto it=begin(); it!=end(); it++){
+		if(*it == item){
+
+		}
+		else{
+			tmp = it.getNode();
+		}
 		cout << "test2" << endl;
 		if(it.getNext()->data == item){
 			cout << "test3" << endl;
