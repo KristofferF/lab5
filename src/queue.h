@@ -23,9 +23,7 @@ public:
     QIterator &operator++(); // prefix ++i
     QIterator operator++(int); // postfix i++
     bool operator!=(const QIterator &qi) const;
-    Node* getNode();
-    Node* getNext();
-
+    Node* getNode() const;
 }; //---------------------------------------------------------------------------
 
 class QList

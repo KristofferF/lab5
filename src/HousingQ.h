@@ -8,7 +8,6 @@
 #ifndef USER_INTERFACE_H_
 #define USER_INTERFACE_H_
 
-#include "personList.h"
 #include "queue.h"
 
 class HousingQ{
@@ -18,12 +17,13 @@ private:
 	int size;
     string fileName;
 
-	PersonList list;
 	void menu();
 	void enque();
+	bool itemPresentInQueue(string persNr);
 	void offerHousing();
 	void printQueue();
 	void printInfo();
+	void printItem(Item& item);
 	void removeFromQueue();
 	void writeToFile();
 	void readFromFile();
