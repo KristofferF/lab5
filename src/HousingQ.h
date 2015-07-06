@@ -19,15 +19,15 @@ private:
 
 	void menu();
 	void enque();
-	bool itemPresentInQueue(string persNr);
+	bool itemPresentInQueue(string persNr) const;
 	void offerHousing();
-	void printQueue();
-	void printInfo();
-	void printItem(Item& item);
+	void printQueue() const;
+	void printInfo() const;
+	void printItem(Item& item) const;
 	void removeFromQueue();
 	void writeToFile();
 	void readFromFile();
-	string selectPerson();
+	string selectPerson() const;
 
 public:
 	void run();

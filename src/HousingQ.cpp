@@ -89,20 +89,13 @@ void HousingQ::enque(){
         cout << "En sökande med detta personnummer finns redan!" << endl << endl;
     }
     else{
-        cout << "Mata in skostorlek: ";
-        cin >> shoeSize;
-        while(cin.fail() || shoeSize < 1 || shoeSize > 60){
-            cin.clear();
-            cin.ignore(256,'\n');
-            cout << "Du måste mata in ett nummer melan 1-60. Var god mata in skostorleken igen: ";
-            cin >> shoeSize;
-        }
-        qList.enque(Person(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], shoeSize));
+        qList.enque(Person(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], 0));
         cout << answers[0] << " " << answers[1] << " har blivit tillagd till bostadskön!" << endl << endl;
+		size++;
     }
 }
 
-bool HousingQ::itemPresentInQueue(string persNr){
+bool HousingQ::itemPresentInQueue(string persNr) const{
     for(auto it=qList.begin(); it!=qList.end(); it++){
         if((*it).getPersNr() == persNr){
             return true;
@@ -120,18 +113,18 @@ void HousingQ::offerHousing(){
 	if(qList.deque(tmpItem)){
         cout << tmpItem.getName().getFirstName() << " " << tmpItem.getName().getLastName() <<
                 " Har blivit erbjuden en bostad." << endl << endl;
+        size--;
     }
     else{
         cout << "Det finns inga personer i bostadskön!" << endl << endl;
     }
-	size--;
 }
 
 //------------------------------------------------------------------------------
 // printQueue
 // Skriver ut bostadsk�n
 //------------------------------------------------------------------------------
-void HousingQ::printQueue(){
+void HousingQ::printQueue() const{
 	if(!qList.isEmpty()){
 		cout << "Skriver ut hela bostadskön, antal: " << size << endl << endl;
 		int i = 1;
@@ -150,7 +143,7 @@ void HousingQ::printQueue(){
 // printInfo
 // Skriver ut information om en sökt person
 //------------------------------------------------------------------------------
-void HousingQ::printInfo(){
+void HousingQ::printInfo() const{
 	if(!qList.isEmpty()){
 		string persNr = selectPerson();
 		int i = 1;
@@ -176,7 +169,7 @@ void HousingQ::printInfo(){
 // printItem
 // Skriver ut information om en person
 //------------------------------------------------------------------------------
-void HousingQ::printItem(Item& item){
+void HousingQ::printItem(Item& item) const{
     cout << item.getName().getFirstName() << " " << item.getName().getLastName() << endl <<
             item.getAddress().getStreetAdress() << endl << item.getAddress().getPostalNumber() <<
             " " << item.getAddress().getCity() << endl << item.getPersNr() << endl << endl;
@@ -190,15 +183,15 @@ void HousingQ::removeFromQueue(){
 	if(!qList.isEmpty()){
 		string persNr = selectPerson();
 		bool found = false;
-		for(auto it=qList.begin(); it!=qList.end(); it++){
+        for(auto it=qList.begin(); it!=qList.end(); it++){
 			if((*it).getPersNr() == persNr){
 				cout << "Tar bort " << (*it).getName().getFirstName() << " " << (*it).getName().getLastName() <<
 						endl << (*it).getPersNr() << " från bostadskön."<< endl << endl;
 				found = true;
-				qList.del((*it));
-				size--;
-				break;
-			}
+                qList.del((*it));
+                size--;
+                break;
+            }
 		}
 		if(!found){
 			cout << "Kunde inte hitta någon sökande med detta personnummer!" << endl << endl;
@@ -210,10 +203,10 @@ void HousingQ::removeFromQueue(){
 }
 
 //------------------------------------------------------------------------------
-// inputFileName
-// L�ter anv�ndaren mata in ett filnamn att l�sa fr�n eller skriva till
+// selectPerson
+// Låter användaren mata in ett personnummer
 //------------------------------------------------------------------------------
-string HousingQ::selectPerson() {
+string HousingQ::selectPerson() const{
 	cout << "Mata in personnummer f�r aktuell person: ";
 	string persNr;
 	cin >> persNr;
@@ -229,7 +222,7 @@ string HousingQ::selectPerson() {
 
 //------------------------------------------------------------------------------
 // readFromFile
-// L�s fr�n filen med namnet fileName
+// L�s fr�n filen med namnet från medlemsvariabeln fileName
 //------------------------------------------------------------------------------
 void HousingQ::readFromFile(){
     fstream inFile(fileName, ios::in);
@@ -252,6 +245,7 @@ void HousingQ::writeToFile(){
             outFile << *it << endl;
         }
         outFile.close();
+		cout << "Bostadskö med "<< size << " personer har sparats!" << endl << endl;
     }
     else{
         cout << "Det finns inga personer i bostadskön!" << endl << endl;

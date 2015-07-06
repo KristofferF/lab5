@@ -15,29 +15,47 @@ public:
     Node (Node *n, Item newData) : next(n), data(newData) {}
 };
 
+//------------------------------------------------------------------------------
+// F�rvald konstruktor (Default constructor)
+//------------------------------------------------------------------------------
 QIterator::QIterator(){
 	node = nullptr;
 }
 
+//------------------------------------------------------------------------------
+// Konstruktor f�r initiering av datamedlemmarna
+//------------------------------------------------------------------------------
 QIterator::QIterator(Node* n){
 	node = n;
 }
 
+//------------------------------------------------------------------------------
+// Överlagrad innehållsoperatorn
+//------------------------------------------------------------------------------
 Item &QIterator::operator*() const{
 	return node->data;
 }
 
+//------------------------------------------------------------------------------
+// Överlagrad tillväxtsoperator (prefix)
+//------------------------------------------------------------------------------
 QIterator &QIterator::operator++(){
 	node = node->next;
 	return *this;
 }
 
+//------------------------------------------------------------------------------
+// Överlagrad tillväxtsoperator (postfix)
+//------------------------------------------------------------------------------
 QIterator QIterator::operator++(int){
 	QIterator tmp = *this;
 	node = node->next;
 	return tmp;
 }
 
+//------------------------------------------------------------------------------
+// Överlagrad olikhetsoperator
+//------------------------------------------------------------------------------
 bool QIterator::operator!=(const QIterator &qi) const{
 	if(this->node == qi.node){
 		return false;
@@ -45,10 +63,17 @@ bool QIterator::operator!=(const QIterator &qi) const{
 	return true;
 }
 
+//------------------------------------------------------------------------------
+// getNode
+// returnerar datamedlemen node
+//------------------------------------------------------------------------------
 Node* QIterator::getNode() const{
 	return node;
 }
 
+//------------------------------------------------------------------------------
+// Dekonstruktor
+//------------------------------------------------------------------------------
 QList::~QList(){
 	while(!isEmpty())
 	{
@@ -58,6 +83,10 @@ QList::~QList(){
 	}
 }
 
+//------------------------------------------------------------------------------
+// enque
+// Lägger till en person sist i kön
+//------------------------------------------------------------------------------
 void QList::enque(Item item){
 	Node* tmp = new Node(nullptr, item);
 	if(isEmpty()){
@@ -69,6 +98,10 @@ void QList::enque(Item item){
 	last = tmp;
 }
 
+//------------------------------------------------------------------------------
+// deque
+// Tar bort en person först i listan
+//------------------------------------------------------------------------------
 bool QList::deque(Item &item){
 	if(!isEmpty()){
 		Node* tmp = first;
@@ -85,6 +118,10 @@ bool QList::deque(Item &item){
 	}
 }
 
+//------------------------------------------------------------------------------
+// del
+// Tar bort en person i listan som motsvarar parametern item
+//------------------------------------------------------------------------------
 bool QList::del(Item item){
 	Node* tmp = nullptr;
 	for(auto it=begin(); it!=end(); it++){
@@ -95,7 +132,11 @@ bool QList::del(Item item){
 		    else{
 		        first = it.getNode()->next;
 		    }
+            if(it.getNode()->next == nullptr){
+                last = tmp;
+            }
 		    delete it.getNode();
+            return true;
 		}
 		else{
 			tmp = it.getNode();
@@ -104,6 +145,10 @@ bool QList::del(Item item){
 	return false;
 }
 
+//------------------------------------------------------------------------------
+// isEmpty
+// Returnerar true om kön är tom
+//------------------------------------------------------------------------------
 bool QList::isEmpty()const{
 	return (first == nullptr);
 }
