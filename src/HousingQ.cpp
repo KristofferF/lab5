@@ -82,8 +82,10 @@ void HousingQ::enque(){
     int shoeSize = 0;
     cin.ignore();
     for(size_t i = 0; i < entries.size(); i++){
-        cout << "Mata in " << entries[i] << ": ";
-        getline(cin, answers[i]);
+        while (answers[i] == ""){
+            cout << "Mata in " << entries[i] << ": ";
+            getline(cin, answers[i]);
+        }
     }
     if(itemPresentInQueue(answers[5])){
         cout << "En sökande med detta personnummer finns redan!" << endl << endl;

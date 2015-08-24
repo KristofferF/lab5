@@ -64,14 +64,6 @@ bool QIterator::operator!=(const QIterator &qi) const{
 }
 
 //------------------------------------------------------------------------------
-// getNode
-// returnerar datamedlemen node
-//------------------------------------------------------------------------------
-Node* QIterator::getNode() const{
-	return node;
-}
-
-//------------------------------------------------------------------------------
 // Dekonstruktor
 //------------------------------------------------------------------------------
 QList::~QList(){
@@ -123,25 +115,24 @@ bool QList::deque(Item &item){
 // Tar bort en person i listan som motsvarar parametern item
 //------------------------------------------------------------------------------
 bool QList::del(Item item){
-	Node* tmp = nullptr;
-	for(auto it=begin(); it!=end(); it++){
-		if(*it == item){
-		    if(tmp != nullptr){
-		        tmp->next = it.getNode()->next;
-		    }
-		    else{
-		        first = it.getNode()->next;
-		    }
-            if(it.getNode()->next == nullptr){
-                last = tmp;
+    Node* tmp;
+    for(Node* n1 = first; n1 != nullptr; n1=n1->next){
+        if(n1->data == item){
+            if(n1 == first){
+                first = n1->next;
             }
-		    delete it.getNode();
+            else{
+                tmp->next = n1->next;
+                if (n1 == last){
+                    last = tmp;
+                }
+            }
+            delete n1;
             return true;
-		}
-		else{
-			tmp = it.getNode();
-		}
-	}
+        } else{
+            tmp = n1;
+        }
+    }
 	return false;
 }
 
